@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nurul Quran - Complete Islamic Guide</title>
+<style>
+:root{--primary-bg:#0b132b;--card-bg:#1c2541;--accent-gold:#f59e0b;--text-light:#ffffff;--text-sub:#cbd5e1;}
+*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,sans-serif;}
+body{background-color:var(--primary-bg);color:var(--text-light);padding-bottom:180px;line-height:1.8;}
+header{background:linear-gradient(135deg,#065f46 0%,#0b132b 50%,#1e3a8a 100%);padding:14px 20px;border-bottom:3px solid var(--accent-gold);display:flex;align-items:center;gap:14px;}
+.logo-img{width:92px;height:92px;border-radius:14px;border:2px solid var(--accent-gold);object-fit:cover;}
+nav{background:var(--card-bg);padding:12px;text-align:center;border-bottom:1px solid #334155;position:sticky;top:0;z-index:900;display:flex;justify-content:center;gap:7px;flex-wrap:wrap;}
+nav button{background:transparent;border:1.5px solid #475569;color:var(--text-light);font-weight:600;cursor:pointer;padding:8px 14px;border-radius:20px;font-size:0.82rem}
+nav button.active,nav button:hover{color:#000;background:var(--accent-gold);border-color:var(--accent-gold);}
+main{max-width:900px;margin:15px auto;padding:0 15px;}
+.page-section{background:var(--card-bg);border:1px solid #334155;border-radius:12px;padding:22px;margin-bottom:15px;display:none;text-align:left;}
+.page-section.active{display:block;}
+.controls-section{background:linear-gradient(135deg,#1e293b,#1c2541);padding:14px;border-radius:10px;border:1.5px solid #f59e0b;margin-bottom:15px;display:flex;gap:10px;flex-wrap:wrap;}
+.controls-section select,.controls-section input{padding:10px;background:var(--primary-bg);color:var(--text-light);border:1.5px solid var(--accent-gold);border-radius:8px;flex-grow:1;}
+.surah-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px;}
+.surah-card{background:linear-gradient(135deg,#1e293b,#1c2541);border:1.5px solid #334155;padding:14px 16px;border-radius:10px;text-align:left}
+#ayahDisplay{background:var(--card-bg);border:2px solid var(--accent-gold);border-radius:12px;padding:18px;margin-bottom:15px;display:none;max-height:70vh;overflow-y:auto;}
+#ayahDisplay.active{display:block;}
+#tasbeeh{font-size:5rem;color:var(--accent-gold);margin:20px 0;font-weight:bold;}
+.player-bar{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(90deg,#064e3b,#0f172a);border-top:3px solid var(--accent-gold);padding:12px 15px;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:1000;}
+audio{width:100%;max-width:650px;height:40px;}
+footer{background:var(--card-bg);border-top:2px solid var(--accent-gold);padding:20px;text-align:center;margin-top:25px;color:var(--text-sub);font-size:0.85rem;border-radius:10px;}
+.juz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px;}
+.juz-card{background:linear-gradient(135deg,#0f172a,#1e293b);border:1.5px solid #334155;padding:12px;border-radius:8px;cursor:pointer;text-align:center;font-weight:600}
+.changelog-item{border-left:4px solid var(--accent-gold);padding:16px;margin:14px 0;background:var(--primary-bg);text-align:left;border-radius:0 8px 8px 0;}
+.link-btn{display:block;margin:12px auto;padding:14px 20px;background:linear-gradient(90deg,#f59e0b,#fbbf24);color:#000;text-decoration:none;border-radius:12px;max-width:340px;font-weight:700;text-align:center}
+.urdu{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;font-size:1.2rem;color:#a7f3d0}
+.thanks-box{background:linear-gradient(135deg,#065f46,#0b132b);border:1.5px solid #10b981;border-radius:12px;padding:20px;margin-top:20px;}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<header>
+<img src="logo.jpeg" alt="Nurul Quran Logo - نور القرآن" title="Nurul Quran DOT COM - By Roshni Rehman" class="logo-img">
+<div><h1 style="color:#f59e0b;">Nurul Quran</h1><span style="color:#a7f3d0;font-size:0.75rem;">By Roshni Rehman | Powered by AlNoor Tech</span></div>
+</header>
+
+<nav aria-label="Main Navigation">
+<button onclick="openPage('home')" id="nav-home" class="active">Home</button>
+<button onclick="openPage('juz')" id="nav-juz">30 Para</button>
+<button onclick="openPage('namaz')" id="nav-namaz">Method of Salah</button>
+<button onclick="openPage('kalma')" id="nav-kalma">6 Kalmas</button>
+<button onclick="openPage('quranicDuas')" id="nav-quranicDuas">Quranic Duas</button>
+<button onclick="openPage('asmaAllah')" id="nav-asmaAllah">99 Names of Allah</button>
+<button onclick="openPage('asmaNabi')" id="nav-asmaNabi">99 Names of Prophet ﷺ</button>
+<button onclick="openPage('tasbeehPage')" id="nav-tasbeehPage">Tasbeeh</button>
+<button onclick="openPage('about')" id="nav-about">About</button>
+<button onclick="openPage('contact')" id="nav-contact">Contact</button>
+<button onclick="openPage('privacy')" id="nav-privacy">Privacy Policy</button>
+<button onclick="openPage('disclaimer')" id="nav-disclaimer">Disclaimer</button>
+<button onclick="openPage('terms')" id="nav-terms">Terms</button>
+</nav>
+
+<main id="main-content">
+<div id="home" class="page-section active" style="display:block;background:transparent;border:none;padding:0;">
+<div class="page-section" style="display:block;text-align:center;"><h2 style="color:var(--accent-gold);">Assalamu Alaikum - Welcome to Complete Islamic Guide</h2><p>Quran | Namaz | Kalmas | Duas | 99 Names | Tasbeeh - Arabic | اردو | English</p></div>
+<section class="controls-section"><select id="reciterSelect" onchange="onReciterChange()"><option value="afs">Mishary Alafasy</option><option value="sds">Al-Sudais</option><option value="maher">Maher Al-Muaiqly</option><option value="basit">Abdul Basit</option></select><select id="transSelect" onchange="if(selectedSurah) loadTranslation(selectedSurah.id)"><option value="en.hilali">English</option><option value="ur.jalandhry">Urdu</option></select><input type="text" id="searchBox" placeholder="Search Surah..." onkeyup="searchSurah()"></section>
+<div id="ayahDisplay"></div><div class="surah-grid" id="surahContainer"></div>
+</div>
+
+<div id="juz" class="page-section"><h2 style="color:var(--accent-gold);text-align:center;">30 Para / Juz</h2><div class="juz-grid" id="juzContainer"></div></div>
+
+<div id="namaz" class="page-section"><h2 style="color:var(--accent-gold);text-align:center;">Method of Salah</h2><div class="changelog-item"><h3 style="color:#f59e0b">1. Niyat - 2. Takbeer - 3. Sana - 4. Fatiha - 5. Ruku - 6. Sajda - 7. Attahiyat - 8. Darood - 9. Dua - 10. Salam</h3><p>Complete Namaz with Arabic | اردو | English - All steps included</p></div></div>
+
+<div id="kalma" class="page-section"><h2 style="color:var(--accent-gold);text-align:center;">6 Kalmas</h2><div id="kalmaList"></div></div>
+<div id="quranicDuas" class="page-section"><h2 style="color:var(--accent-gold);text-align:center;">Quranic Duas</h2><div id="quranicDuasList"></div></div>
+<div id="asmaAllah" class="page-section"><h2 style="color:var(--accent-gold);text-align:center;">99 Names of Allah</h2><div id="allahNamesGrid" class="surah-grid" style="margin-top:15px"></div></div>
+<div id="asmaNabi" class="page-section"><h2 style="color:#10b981;text-align:center;">99 Names of Prophet ﷺ</h2><div id="nabiNamesGrid" class="surah-grid" style="margin-top:15px"></div></div>
+
+<div id="tasbeehPage" class="page-section" style="text-align:center;">
+<h2 style="color:var(--accent-gold);">Tasbeeh Counter</h2>
+<select id="tasbeehSelect" onchange="changeTasbeeh()" style="padding:12px;background:#0b132b;color:#fff;border:1.5px solid #f59e0b;border-radius:8px;width:100%;max-width:480px;margin:15px auto;display:block;">
+<option value="SubhanAllah">سبحان الله - SubhanAllah</option>
+<option value="Alhamdulillah">الحمد لله - Alhamdulillah</option>
+<option value="AllahuAkbar">الله أكبر - Allahu Akbar</option>
+<option value="Astaghfirullah">أستغفر الله - Astaghfirullah</option>
+<option value="Darood">صلى الله عليه وسلم - Darood Sharif</option>
+</select>
+<div style="background:rgba(245,158,11,0.1);border:1px solid #f59e0b;border-radius:10px;padding:15px;margin:15px 0;"><h3 id="tasbeehArabic" style="font-family:'Amiri',serif;font-size:2.4rem;color:#f59e0b">سبحان الله</h3><p id="tasbeehTrans"><span class="urdu">پاک ہے اللہ</span> | Glory be to Allah</p></div>
+<div id="tasbeeh">0</div>
+<button onclick="tasbeehCount()" style="padding:18px 50px;background:linear-gradient(90deg,#f59e0b,#fbbf24);color:#000;font-size:1.5rem;font-weight:bold;border-radius:35px;border:none;cursor:pointer;">Count</button><br><br>
+<button onclick="resetTasbeeh()" style="padding:8px 20px;background:transparent;border:1px solid #475569;color:#fff;border-radius:6px;cursor:pointer;">Reset</button>
+<p style="margin-top:15px">Total: <span id="tasbeehTotal">0</span> | Current: <span id="currentTasbeehCount">0</span></p>
+</div>
+
+<div id="about" class="page-section">
+<h2 style="color:var(--accent-gold);text-align:center;">About This Site - Nurul Quran</h2>
+<div class="changelog-item">
+<p><b>Assalamu Alaikum!</b> I am <b>Roshni Rehman</b> from Delhi, India. Diploma in Music Technology.</p>
+<p>This website <b>Nurul Quran - Complete Islamic Guide</b> is created for <b>Sawab-e-Jariya</b>.</p>
+<p style="color:#f59e0b;font-weight:bold">By Roshni Rehman | Powered by AlNoor Tech</p>
+</div>
+<div class="thanks-box">
+<h3 style="color:#10b981;text-align:center;">🌟 Special Thanks - خاص شکریہ 🌟</h3>
+<p style="margin-top:12px;text-align:center;font-size:1.15rem;color:#fff;line-height:1.9">
+Special Thanks to <b style="color:#f59e0b;font-size:1.3rem;">Mohd Gayas Uddeen</b><br>
+for guiding me in this noble work and always supporting me.<br><br>
+<span style="font-size:1.05rem;">Heartfelt thanks to all the users who use it daily and those who visit it.</span><br><br>
+<span class="urdu" style="color:#a7f3d0;font-size:1.4rem;">اللہ آپ سب کو جزائے خیر دے - آمین</span>
+</p>
+</div>
+</div>
+
+<div id="contact" class="page-section" style="text-align:center;">
+<h2 style="color:var(--accent-gold);">Contact Us - رابطہ کریں</h2>
+<p style="color:#cbd5e1;margin-bottom:20px;">Connect with Roshni Rehman - Nurul Quran DOT COM</p>
+<a class="link-btn" href="https://t.me/rosh_rehman" target="_blank" style="background:linear-gradient(90deg,#229ED9,#2AABEE);color:#fff;">Join me on Telegram<br>https://t.me/rosh_rehman</a>
+<a class="link-btn" href="mailto:rehmanrosh@gmail.com" style="background:linear-gradient(90deg,#10b981,#34d399);color:#fff;">Connect me on E-mail<br>rehmanrosh@gmail.com</a>
+<a class="link-btn" href="https://wa.me/919354729460" target="_blank" style="background:linear-gradient(90deg,#25D366,#128C7E);color:#fff;">Join me on WhatsApp<br>https://wa.me/919354729460</a>
+</div>
+
+<div id="privacy" class="page-section">
+<h2 style="color:var(--accent-gold);text-align:center;">Privacy Policy</h2>
+<div class="changelog-item">
+<p><b>Last Updated: 2026 - Nurul Quran DOT COM</b></p>
+<p>Your privacy is important. We do not collect personal data. This site uses localStorage only for Tasbeeh counter in your browser.</p>
+<p><b>Third Party:</b> We use api.alquran.cloud for Quran text & mp3quran.net for audio.</p>
+<p><b>Cookies:</b> No tracking cookies, No ads tracking.</p>
+<p>Contact: rehmanrosh@gmail.com for any privacy concern.</p>
+</div>
+</div>
+
+<div id="disclaimer" class="page-section">
+<h2 style="color:var(--accent-gold);text-align:center;">Disclaimer</h2>
+<div class="changelog-item">
+<p><b>Nurul Quran DOT COM</b> - For Islamic education only. We try best for accurate Arabic/Urdu/English but please verify with Aalim if error found.</p>
+<p>Audio from public Islamic servers. We are not responsible for external links (Telegram/WhatsApp).</p>
+<p>This is Sawab-e-Jariya project. May Allah forgive mistakes. Ameen.</p>
+</div>
+</div>
+
+<div id="terms" class="page-section">
+<h2 style="color:var(--accent-gold);text-align:center;">Terms and Conditions</h2>
+<div class="changelog-item">
+<p><b>Welcome to Nurul Quran DOT COM</b></p>
+<p>1. Free use for Islamic learning. Share for Sawab.<br>2. Do not misuse verses or change meaning.<br>3. Design by Roshni Rehman | AlNoor Tech - No commercial copy without permission.<br>4. Site as-is, API may fail sometimes.</p>
+<p>Contact: rehmanrosh@gmail.com</p>
+</div>
+</div>
+
+<footer>© 2024-2026 Nurul Quran DOT COM - By Roshni Rehman | Powered by AlNoor Tech | Special Thanks to Mohd Gayas Uddeen | Sawab-e-Jariya<br>
+<a onclick="openPage('privacy')" style="color:#f59e0b;cursor:pointer;">Privacy Policy</a> | 
+<a onclick="openPage('disclaimer')" style="color:#f59e0b;cursor:pointer;">Disclaimer</a> | 
+<a onclick="openPage('terms')" style="color:#f59e0b;cursor:pointer;">Terms</a> | 
+<a onclick="openPage('contact')" style="color:#f59e0b;cursor:pointer;">Contact</a>
+</footer>
+</main>
+<div class="player-bar"><div id="currentPlaying" style="color:#fff;font-weight:600;">Select Surah to play</div><audio id="mainAudioPlayer" controls autoplay></audio></div>
+
+<script>
+const surahs=[{id:1,name:"Al-Fatiha",arabic:"الفاتحة"},{id:2,name:"Al-Baqarah",arabic:"البقرة"},{id:3,name:"Ali 'Imran",arabic:"آل عمران"},{id:4,name:"An-Nisa",arabic:"النساء"},{id:5,name:"Al-Ma'idah",arabic:"المائدة"},{id:6,name:"Al-An'am",arabic:"الأنعام"},{id:7,name:"Al-A'raf",arabic:"الأعراف"},{id:8,name:"Al-Anfal",arabic:"الأنفال"},{id:9,name:"At-Tawbah",arabic:"التوبة"},{id:10,name:"Yunus",arabic:"يونس"},{id:11,name:"Hud",arabic:"هود"},{id:12,name:"Yusuf",arabic:"يوسف"},{id:13,name:"Ar-Ra'd",arabic:"الرعد"},{id:14,name:"Ibrahim",arabic:"إبراهيم"},{id:15,name:"Al-Hijr",arabic:"الحجر"},{id:16,name:"An-Nahl",arabic:"النحل"},{id:17,name:"Al-Isra",arabic:"الإسراء"},{id:18,name:"Al-Kahf",arabic:"الكهف"},{id:19,name:"Maryam",arabic:"مريم"},{id:20,name:"Ta-Ha",arabic:"طه"},{id:21,name:"Al-Anbya",arabic:"الأنبياء"},{id:22,name:"Al-Hajj",arabic:"الحج"},{id:23,name:"Al-Mu'minun",arabic:"المؤمنون"},{id:24,name:"An-Nur",arabic:"النور"},{id:25,name:"Al-Furqan",arabic:"الفرقان"},{id:26,name:"Ash-Shu'ara",arabic:"الشعراء"},{id:27,name:"An-Naml",arabic:"النمل"},{id:28,name:"Al-Qasas",arabic:"القصص"},{id:29,name:"Al-Ankabut",arabic:"العنكبوت"},{id:30,name:"Ar-Rum",arabic:"الروم"},{id:31,name:"Luqman",arabic:"لقمان"},{id:32,name:"As-Sajdah",arabic:"السجدة"},{id:33,name:"Al-Ahzab",arabic:"الأحزاب"},{id:34,name:"Saba",arabic:"سبأ"},{id:35,name:"Fatir",arabic:"فاطر"},{id:36,name:"Ya-Sin",arabic:"يس"},{id:37,name:"As-Saffat",arabic:"الصافات"},{id:38,name:"Sad",arabic:"ص"},{id:39,name:"Az-Zumar",arabic:"الزمر"},{id:40,name:"Ghafir",arabic:"غافر"},{id:41,name:"Fussilat",arabic:"فصلت"},{id:42,name:"Ash-Shura",arabic:"الشورى"},{id:43,name:"Az-Zukhruf",arabic:"الزخرف"},{id:44,name:"Ad-Dukhan",arabic:"الدخان"},{id:45,name:"Al-Jathiyah",arabic:"الجاثية"},{id:46,name:"Al-Ahqaf",arabic:"الأحقاف"},{id:47,name:"Muhammad",arabic:"محمد"},{id:48,name:"Al-Fath",arabic:"الفتح"},{id:49,name:"Al-Hujurat",arabic:"الحجرات"},{id:50,name:"Qaf",arabic:"ق"},{id:51,name:"Adh-Dhariyat",arabic:"الذاريات"},{id:52,name:"At-Tur",arabic:"الطور"},{id:53,name:"An-Najm",arabic:"النجم"},{id:54,name:"Al-Qamar",arabic:"القمر"},{id:55,name:"Ar-Rahman",arabic:"الرحمن"},{id:56,name:"Al-Waqi'ah",arabic:"الواقعة"},{id:57,name:"Al-Hadid",arabic:"الحديد"},{id:58,name:"Al-Mujadila",arabic:"المجادلة"},{id:59,name:"Al-Hashr",arabic:"الحشر"},{id:60,name:"Al-Mumtahanah",arabic:"الممتحنة"},{id:61,name:"As-Saff",arabic:"الصف"},{id:62,name:"Al-Jumu'ah",arabic:"الجمعة"},{id:63,name:"Al-Munafiqun",arabic:"المنافقون"},{id:64,name:"At-Taghabun",arabic:"التغابن"},{id:65,name:"At-Talaq",arabic:"الطلاق"},{id:66,name:"At-Tahrim",arabic:"التحريم"},{id:67,name:"Al-Mulk",arabic:"الملك"},{id:68,name:"Al-Qalam",arabic:"القلم"},{id:69,name:"Al-Haqqah",arabic:"الحاقة"},{id:70,name:"Al-Ma'arij",arabic:"المعارج"},{id:71,name:"Nuh",arabic:"نوح"},{id:72,name:"Al-Jinn",arabic:"الجن"},{id:73,name:"Al-Muzzammil",arabic:"المزمل"},{id:74,name:"Al-Muddathir",arabic:"المدثر"},{id:75,name:"Al-Qiyamah",arabic:"القيامة"},{id:76,name:"Al-Insan",arabic:"الإنسان"},{id:77,name:"Al-Mursalat",arabic:"المرسلات"},{id:78,name:"An-Naba",arabic:"النبأ"},{id:79,name:"An-Nazi'at",arabic:"النازعات"},{id:80,name:"Abasa",arabic:"عبس"},{id:81,name:"At-Takwir",arabic:"التكوير"},{id:82,name:"Al-Infitar",arabic:"الإنفطار"},{id:83,name:"Al-Mutaffifin",arabic:"المطففين"},{id:84,name:"Al-Inshiqaq",arabic:"الإنشقاق"},{id:85,name:"Al-Buruj",arabic:"البروج"},{id:86,name:"At-Tariq",arabic:"الطارق"},{id:87,name:"Al-A'la",arabic:"الأعلى"},{id:88,name:"Al-Ghashiyah",arabic:"الغاشية"},{id:89,name:"Al-Fajr",arabic:"الفجر"},{id:90,name:"Al-Balad",arabic:"البلد"},{id:91,name:"Ash-Shams",arabic:"الشمس"},{id:92,name:"Al-Layl",arabic:"الليل"},{id:93,name:"Ad-Duha",arabic:"الضحى"},{id:94,name:"Ash-Sharh",arabic:"الشرح"},{id:95,name:"At-Tin",arabic:"التين"},{id:96,name:"Al-Alaq",arabic:"العلق"},{id:97,name:"Al-Qadr",arabic:"القدر"},{id:98,name:"Al-Bayyinah",arabic:"البينة"},{id:99,name:"Az-Zalzalah",arabic:"الزلزلة"},{id:100,name:"Al-Adiyat",arabic:"العاديات"},{id:101,name:"Al-Qari'ah",arabic:"القارعة"},{id:102,name:"At-Takathur",arabic:"التكاثر"},{id:103,name:"Al-Asr",arabic:"العصر"},{id:104,name:"Al-Humazah",arabic:"الهمزة"},{id:105,name:"Al-Fil",arabic:"الفيل"},{id:106,name:"Quraysh",arabic:"قريش"},{id:107,name:"Al-Ma'un",arabic:"الماعون"},{id:108,name:"Al-Kawthar",arabic:"الكوثر"},{id:109,name:"Al-Kafirun",arabic:"الكافرون"},{id:110,name:"An-Nasr",arabic:"النصر"},{id:111,name:"Al-Masad",arabic:"المسد"},{id:112,name:"Al-Ikhlas",arabic:"الإخلاص"},{id:113,name:"Al-Falaq",arabic:"الفلق"},{id:114,name:"An-Nas",arabic:"الناس"}];
+let selectedSurah=null; let tasbeeh=0;
+const reciterConfig={afs:{servers:["https://server8.mp3quran.net/afs"],ayah:"ar.alafasy"},sds:{servers:["https://server11.mp3quran.net/sds"],ayah:"ar.abdurrahmaansudais"},maher:{servers:["https://server12.mp3quran.net/maher"],ayah:"ar.mahermuaiqly"},basit:{servers:["https://server7.mp3quran.net/basit/Almusshaf-Al-Mojawwad"],ayah:"ar.abdulbasitmurattal"}};
+const sixKalmas=[{no:1,name:"1st Kalma - Tayyab",ar:"لَا إِلَٰهَ إِلَّا ٱللَّٰهُ مُحَمَّدٌ رَّسُولُ ٱللَّٰهِ",ur:"اللہ کے سوا کوئی معبود نہیں",en:"There is no god but Allah, Muhammad is Messenger of Allah"},{no:2,name:"2nd Kalma - Shahadat",ar:"أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا ٱللَّٰهُ",ur:"میں گواہی دیتی ہوں",en:"I bear witness"},{no:3,name:"3rd Kalma - Tamjeed",ar:"سُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ",ur:"پاک ہے اللہ",en:"Glory be to Allah"},{no:4,name:"4th Kalma - Tauheed",ar:"لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ",ur:"اللہ اکیلا ہے",en:"Allah is One"},{no:5,name:"5th Kalma - Astaghfar",ar:"أَسْتَغْفِرُ اللَّهَ رَبِّي",ur:"معافی مانگتی ہوں",en:"I seek forgiveness"},{no:6,name:"6th Kalma - Radd",ar:"اَللّٰهُمَّ اِنِّیْٓ اَعُوْذُبِكَ",ur:"اے اللہ پناہ مانگتی ہوں",en:"O Allah I seek refuge"}];
+const quranicDuas=[{ref:"Al-Baqarah 2:127",ar:"رَبَّنَا تَقَبَّلْ مِنَّا",ur:"اے ہمارے رب ہم سے قبول فرما",en:"Our Lord accept from us"},{ref:"Al-Baqarah 2:201",ar:"رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً",ur:"ہمیں دنیا میں بھلائی دے",en:"Give us good"},{ref:"Al-Imran 3:8",ar:"رَبَّنَا لَا تُزِغْ قُلُوبَنَا",ur:"ہمارے دلوں کو ٹیڑھا نہ کر",en:"Let not our hearts deviate"},{ref:"Taha 20:114",ar:"رَّبِّ زِدْنِي عِلْمًا",ur:"میرے علم میں اضافہ فرما",en:"Increase me in knowledge"}];
+const allahNames=[{ar:"الرَّحْمَنُ",ur:"بے حد مہربان",en:"The Most Merciful"},{ar:"الرَّحِيمُ",ur:"نہایت رحم والا",en:"Most Compassionate"},{ar:"الْمَلِكُ",ur:"بادشاہ",en:"King"},{ar:"الْقُدُّوسُ",ur:"پاک ذات",en:"Holy One"},{ar:"السَّلَامُ",ur:"سلامتی والا",en:"Source of Peace"},{ar:"الْمُؤْمِنُ",ur:"امن دینے والا",en:"Guardian of Faith"},{ar:"الْمُهَيْمِنُ",ur:"نگہبان",en:"Protector"},{ar:"الْعَزِيزُ",ur:"غالب",en:"Mighty"},{ar:"الْجَبَّارُ",ur:"زبردست",en:"Compeller"},{ar:"الْمُتَكَبِّرُ",ur:"بڑائی والا",en:"Supreme"},{ar:"الْخَالِقُ",ur:"پیدا کرنے والا",en:"Creator"},{ar:"الْبَارِئُ",ur:"بنانے والا",en:"Maker"},{ar:"الْمُصَوِّرُ",ur:"صورت بنانے والا",en:"Fashioner"},{ar:"الْغَفَّارُ",ur:"بخشنے والا",en:"Forgiver"},{ar:"الْقَهَّارُ",ur:"قابو رکھنے والا",en:"Subduer"},{ar:"الْوَهَّابُ",ur:"دینے والا",en:"Bestower"},{ar:"الرَّزَّاقُ",ur:"رزق دینے والا",en:"Provider"},{ar:"الْفَتَّاحُ",ur:"کھولنے والا",en:"Opener"},{ar:"الْعَلِيمُ",ur:"جاننے والا",en:"All-Knowing"},{ar:"الْقَابِضُ",ur:"تنگ کرنے والا",en:"Withholder"},{ar:"الْبَاسِطُ",ur:"کشادہ کرنے والا",en:"Expander"},{ar:"الْخَافِضُ",ur:"پست کرنے والا",en:"Abaser"},{ar:"الرَّافِعُ",ur:"بلند کرنے والا",en:"Exalter"},{ar:"الْمُعِزُّ",ur:"عزت دینے والا",en:"Giver of Honor"},{ar:"الْمُذِلُّ",ur:"ذلت دینے والا",en:"Giver of Dishonor"},{ar:"السَّمِيعُ",ur:"سننے والا",en:"All-Hearing"},{ar:"الْبَصِيرُ",ur:"دیکھنے والا",en:"All-Seeing"},{ar:"الْحَكَمُ",ur:"فیصلہ کرنے والا",en:"Judge"},{ar:"الْعَدْلُ",ur:"عدل والا",en:"Just"},{ar:"اللَّطِيفُ",ur:"نرم",en:"Subtle"},{ar:"الْخَبِيرُ",ur:"خبر رکھنے والا",en:"Aware"},{ar:"الْحَلِيمُ",ur:"بردبار",en:"Forbearing"},{ar:"الْعَظِيمُ",ur:"عظمت والا",en:"Magnificent"},{ar:"الْغَفُورُ",ur:"بخشنے والا",en:"Forgiving"},{ar:"الشَّكُورُ",ur:"قدر کرنے والا",en:"Appreciative"},{ar:"الْعَلِيُّ",ur:"بلند",en:"Most High"},{ar:"الْكَبِيرُ",ur:"بڑا",en:"Greatest"},{ar:"الْحَفِيظُ",ur:"حفاظت کرنے والا",en:"Preserver"},{ar:"الْمُقِيتُ",ur:"روزی دینے والا",en:"Nourisher"},{ar:"الْحَسِيبُ",ur:"حساب لینے والا",en:"Reckoner"},{ar:"الْجَلِيلُ",ur:"بزرگ",en:"Majestic"},{ar:"الْكَرِيمُ",ur:"کرم والا",en:"Generous"},{ar:"الرَّقِيبُ",ur:"نگہبان",en:"Watchful"},{ar:"الْمُجِيبُ",ur:"قبول کرنے والا",en:"Responsive"},{ar:"الْوَاسِعُ",ur:"وسعت والا",en:"Vast"},{ar:"الْحَكِيمُ",ur:"حکمت والا",en:"Wise"},{ar:"الْوَدُودُ",ur:"محبت کرنے والا",en:"Loving"},{ar:"الْمَجِيدُ",ur:"بزرگ",en:"Glorious"},{ar:"الْبَاعِثُ",ur:"اٹھانے والا",en:"Resurrector"},{ar:"الشَّهِيدُ",ur:"گواہ",en:"Witness"},{ar:"الْحَقُّ",ur:"حق",en:"Truth"},{ar:"الْوَكِيلُ",ur:"کارساز",en:"Trustee"},{ar:"الْقَوِيُّ",ur:"طاقتور",en:"Strong"},{ar:"الْمَتِينُ",ur:"مضبوط",en:"Firm"},{ar:"الْوَلِيُّ",ur:"دوست",en:"Friend"},{ar:"الْحَمِيدُ",ur:"تعریف والا",en:"Praiseworthy"},{ar:"الْمُحْصِي",ur:"گننے والا",en:"Counter"},{ar:"الْمُبْدِئُ",ur:"پہلی بار پیدا کرنے والا",en:"Originator"},{ar:"الْمُعِيدُ",ur:"دوبارہ پیدا کرنے والا",en:"Restorer"},{ar:"الْمُحْيِي",ur:"زندہ کرنے والا",en:"Giver of Life"},{ar:"الْمُمِيتُ",ur:"موت دینے والا",en:"Bringer of Death"},{ar:"الْحَيُّ",ur:"زندہ",en:"Ever-Living"},{ar:"الْقَيُّومُ",ur:"قائم رکھنے والا",en:"Sustainer"},{ar:"الْوَاجِدُ",ur:"پانے والا",en:"Finder"},{ar:"الْمَاجِدُ",ur:"بزرگی والا",en:"Noble"},{ar:"الْوَاحِدُ",ur:"ایک",en:"One"},{ar:"الصَّمَدُ",ur:"بے نیاز",en:"Eternal"},{ar:"الْقَادِرُ",ur:"قدرت والا",en:"Powerful"},{ar:"الْمُقْتَدِرُ",ur:"اقتدار والا",en:"Omnipotent"},{ar:"الْمُقَدِّمُ",ur:"آگے کرنے والا",en:"Promoter"},{ar:"الْمُؤَخِّرُ",ur:"پیچھے کرنے والا",en:"Delayer"},{ar:"الْأَوَّلُ",ur:"پہلا",en:"First"},{ar:"الْآخِرُ",ur:"آخری",en:"Last"},{ar:"الظَّاهِرُ",ur:"ظاہر",en:"Manifest"},{ar:"الْبَاطِنُ",ur:"باطن",en:"Hidden"},{ar:"الْوَالِي",ur:"والی",en:"Governor"},{ar:"الْمُتَعَالِي",ur:"بلند",en:"Exalted"},{ar:"الْبَرُّ",ur:"نیک",en:"Righteous"},{ar:"التَّوَّابُ",ur:"توبہ قبول کرنے والا",en:"Acceptor of Repentance"},{ar:"الْمُنْتَقِمُ",ur:"انتقام لینے والا",en:"Avenger"},{ar:"الْعَفُوُّ",ur:"معاف کرنے والا",en:"Pardoner"},{ar:"الرَّءُوفُ",ur:"شفیق",en:"Compassionate"},{ar:"مَالِكُ الْمُلْكِ",ur:"بادشاہت کا مالک",en:"Owner of Kingdom"},{ar:"ذُو الْجَلَالِ وَالْإِكْرَامِ",ur:"جلال اور اکرام والا",en:"Lord of Majesty"},{ar:"الْمُقْسِطُ",ur:"انصاف کرنے والا",en:"Equitable"},{ar:"الْجَامِعُ",ur:"جمع کرنے والا",en:"Gatherer"},{ar:"الْغَنِيُّ",ur:"غنی",en:"Self-Sufficient"},{ar:"الْمُغْنِي",ur:"غنی کرنے والا",en:"Enricher"},{ar:"الْمَانِعُ",ur:"روکنے والا",en:"Preventer"},{ar:"الضَّارُّ",ur:"نقصان پہنچانے والا",en:"Harmer"},{ar:"النَّافِعُ",ur:"نفع دینے والا",en:"Benefiter"},{ar:"النُّورُ",ur:"نور",en:"Light"},{ar:"الْهَادِي",ur:"ہدایت دینے والا",en:"Guide"},{ar:"الْبَدِيعُ",ur:"نیا پیدا کرنے والا",en:"Originator"},{ar:"الْبَاقِي",ur:"باقی رہنے والا",en:"Everlasting"},{ar:"الْوَارِثُ",ur:"وارث",en:"Inheritor"},{ar:"الرَّشِيدُ",ur:"ہدایت دینے والا",en:"Rightly Guided"},{ar:"الصَّبُورُ",ur:"صبر والا",en:"Patient"}];
+const nabiNames=[{ar:"مُحَمَّدٌ",ur:"تعریف کیے گئے",en:"Muhammad"},{ar:"أَحْمَدُ",ur:"بہت تعریف والے",en:"Ahmad"},{ar:"الْحَاشِرُ",ur:"جمع کرنے والے",en:"Al-Hashir"},{ar:"الْمَاحِي",ur:"کفر مٹانے والے",en:"Al-Mahi"},{ar:"الْعَاقِبُ",ur:"آخری نبی",en:"Al-Aqib"},{ar:"الْمُقَفِّي",ur:"پیچھے آنے والے",en:"Al-Muqaffi"},{ar:"نَبِيُّ الرَّحْمَةِ",ur:"رحمت کے نبی",en:"Prophet of Mercy"},{ar:"الْبَشِيرُ",ur:"خوشخبری دینے والے",en:"Al-Bashir"},{ar:"النَّذِيرُ",ur:"ڈرانے والے",en:"An-Nadhir"},{ar:"السِّرَاجُ الْمُنِيرُ",ur:"روشن چراغ",en:"Siraj-un-Munir"},{ar:"خَاتَمُ النَّبِيِّينَ",ur:"نبیوں کے خاتم",en:"Seal of Prophets"},{ar:"رَحْمَةٌ لِلْعَالَمِينَ",ur:"جہانوں کے لیے رحمت",en:"Mercy to Worlds"},{ar:"طٰهٰ",ur:"طٰہٰ",en:"Taha"},{ar:"يٰسٓ",ur:"یٰسٓ",en:"Yaseen"}];
+function openPage(p){document.querySelectorAll('.page-section').forEach(x=>{x.classList.remove('active'); x.style.display='none';});document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));const el=document.getElementById(p);if(el){el.classList.add('active'); el.style.display='block';}const b=document.getElementById('nav-'+p);if(b) b.classList.add('active');window.scrollTo(0,0);}
+function renderSurahs(list=surahs){const c=document.getElementById("surahContainer");c.innerHTML="";list.forEach(s=>{const card=document.createElement("div");card.className=`surah-card`;card.onclick=()=>playSurah(s);card.innerHTML=`<div style="display:flex;align-items:center;gap:12px;"><div style="background:linear-gradient(135deg,#065f46,#0e7490);color:#f59e0b;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:bold;">${s.id}</div><div><h2 style="font-size:1rem;">${s.name}</h2></div></div><div style="color:var(--accent-gold);font-weight:bold;font-family:'Amiri',serif;">${s.arabic}</div>`;c.appendChild(card);});}
+function renderJuz(){const c=document.getElementById("juzContainer");c.innerHTML="";for(let i=1;i<=30;i++){const d=document.createElement("div");d.className="juz-card";d.innerText="Juz "+i;d.onclick=()=>loadJuz(i);c.appendChild(d);}}
+function playSurah(s){selectedSurah=s; const rc=document.getElementById("reciterSelect").value; const cfg=reciterConfig[rc]; const fid=String(s.id).padStart(3,'0'); const pl=document.getElementById("mainAudioPlayer"); pl.src=`${cfg.servers[0]}/${fid}.mp3`; pl.play().catch(()=>{pl.src=`https://cdn.islamic.network/quran/audio-surah/128/${cfg.ayah}/${s.id}.mp3`; pl.play();}); document.getElementById("currentPlaying").innerText=`Now Playing: Surah ${s.name}`; loadTranslation(s.id);}
+async function loadTranslation(id){const trans=document.getElementById("transSelect").value; const box=document.getElementById("ayahDisplay"); box.classList.add("active"); box.innerHTML="Loading..."; try{const [aR,tR]=await Promise.all([fetch(`https://api.alquran.cloud/v1/surah/${id}`), fetch(`https://api.alquran.cloud/v1/surah/${id}/${trans}`)]); const aD=await aR.json(); const tD=await tR.json(); if(aD.code==200){box.innerHTML=""; aD.data.ayahs.forEach((ayah,i)=>{const tr=tD.data.ayahs[i]?.text||""; const div=document.createElement("div"); div.style.padding="12px 0"; div.style.borderBottom="1px solid #334155"; div.innerHTML=`<div style="font-size:1.7rem;text-align:right;direction:rtl;font-family:'Amiri',serif;">${ayah.text}</div><div style="color:#cbd5e1;font-size:0.9rem;text-align:left;margin-top:6px;">${tr}</div>`; box.appendChild(div);});}}catch(e){box.innerHTML="Failed";}}
+function onReciterChange(){if(selectedSurah)playSurah(selectedSurah);}
+function searchSurah(){const q=document.getElementById("searchBox").value.toLowerCase();const f=surahs.filter(s=>s.name.toLowerCase().includes(q)||String(s.id).includes(q));renderSurahs(f);}
+let tasbeehData={"SubhanAllah":{ar:"سبحان الله",ur:"پاک ہے اللہ",en:"Glory be to Allah"},"Alhamdulillah":{ar:"الحمد لله",ur:"تمام تعریفیں اللہ کے لیے",en:"All praise to Allah"},"AllahuAkbar":{ar:"الله أكبر",ur:"اللہ سب سے بڑا ہے",en:"Allah is Greatest"},"Astaghfirullah":{ar:"أستغفر الله",ur:"میں معافی مانگتا ہوں",en:"I seek forgiveness"},"Darood":{ar:"صلى الله عليه وسلم",ur:"درود شریف",en:"Peace be upon Him"}};
+function changeTasbeeh(){let v=document.getElementById('tasbeehSelect').value; document.getElementById('tasbeehArabic').innerText=tasbeehData[v]?.ar||v; document.getElementById('tasbeehTrans').innerHTML=`<span class="urdu">${tasbeehData[v]?.ur||""}</span> | ${tasbeehData[v]?.en||""}`; tasbeeh=parseInt(localStorage.getItem('tasbeeh_'+v)||'0'); document.getElementById('tasbeeh').innerText=tasbeeh; document.getElementById('currentTasbeehCount').innerText=tasbeeh;}
+function tasbeehCount(){tasbeeh++; document.getElementById('tasbeeh').innerText=tasbeeh; document.getElementById('currentTasbeehCount').innerText=tasbeeh; let sel=document.getElementById('tasbeehSelect').value; localStorage.setItem('tasbeeh_'+sel, tasbeeh); let total=parseInt(localStorage.getItem('tasbeeh_total')||'0')+1; localStorage.setItem('tasbeeh_total',total); document.getElementById('tasbeehTotal').innerText=total; if(tasbeeh%33==0 && navigator.vibrate) navigator.vibrate(200);}
+function resetTasbeeh(){let sel=document.getElementById('tasbeehSelect').value; tasbeeh=0; document.getElementById('tasbeeh').innerText=0; document.getElementById('currentTasbeehCount').innerText=0; localStorage.setItem('tasbeeh_'+sel,'0');}
+function renderKalmas(){const g=document.getElementById('kalmaList'); g.innerHTML=''; sixKalmas.forEach(k=>{const d=document.createElement('div'); d.className='changelog-item'; d.innerHTML=`<h3 style="color:#f59e0b">${k.no}. ${k.name}</h3><p><b style="font-size:1.5rem;font-family:'Amiri',serif">${k.ar}</b><br><span class="urdu">اردو: ${k.ur}</span><br>English: ${k.en}</p>`; g.appendChild(d);});}
+function renderQuranicDuas(){const list=document.getElementById('quranicDuasList'); list.innerHTML=''; quranicDuas.forEach((d,i)=>{const div=document.createElement('div'); div.className='changelog-item'; div.innerHTML=`<h3 style="color:#f59e0b">${i+1}. ${d.ref}</h3><p><b style="font-size:1.4rem;font-family:'Amiri',serif">${d.ar}</b><br><span class="urdu">اردو: ${d.ur}</span><br>English: ${d.en}</p>`; list.appendChild(div);});}
+function renderAllah(){const g=document.getElementById('allahNamesGrid'); g.innerHTML=''; allahNames.forEach((n,i)=>{const div=document.createElement('div'); div.className='surah-card'; div.innerHTML=`<div><b style="color:#f59e0b">${i+1}.</b> <span style="font-family:'Amiri',serif;font-size:1.2rem">${n.ar}</span><br><small><span class="urdu">${n.ur}</span><br>${n.en}</small></div>`; g.appendChild(div);});}
+function renderNabi(){const g=document.getElementById('nabiNamesGrid'); g.innerHTML=''; nabiNames.forEach((n,i)=>{const div=document.createElement('div'); div.className='surah-card'; div.style.borderColor='#10b981'; div.innerHTML=`<div><b style="color:#10b981">${i+1}.</b> <span style="font-family:'Amiri',serif;font-size:1.2rem">${n.ar}</span><br><small><span class="urdu">${n.ur}</span><br>${n.en}</small></div>`; g.appendChild(div);});}
+async function loadJuz(j){openPage('home'); const box=document.getElementById("ayahDisplay"); box.classList.add("active"); box.innerHTML=`Loading Juz ${j}...`; const tr=document.getElementById("transSelect").value; try{const res=await fetch(`https://api.alquran.cloud/v1/juz/${j}/${tr}`); const d=await res.json(); if(d.code==200){box.innerHTML=`<h3 style="color:#f59e0b;text-align:center;">Juz ${j}</h3>`; d.data.ayahs.forEach(a=>{const div=document.createElement("div");div.style.padding="10px 0";div.style.borderBottom="1px solid #334155";div.innerHTML=`<div style="font-size:1.5rem;text-align:right;direction:rtl;font-family:'Amiri',serif;">${a.text}</div>`;box.appendChild(div);});}}catch(e){box.innerHTML="Failed";}}
+(function(){renderSurahs(); renderJuz(); renderKalmas(); renderQuranicDuas(); renderAllah(); renderNabi(); tasbeeh=parseInt(localStorage.getItem('tasbeeh_SubhanAllah')||'0'); document.getElementById('tasbeeh').innerText=tasbeeh; document.getElementById('tasbeehTotal').innerText=localStorage.getItem('tasbeeh_total')||'0'; document.getElementById('currentTasbeehCount').innerText=tasbeeh;})();
+</script>
+</body>
+</html>
